@@ -1,4 +1,4 @@
-# CoIDO: Confidence-aware Instruction Data Optimization
+# CoIDO: Efficient Data Selection for Visual Instruction Tuning via Coupled Importance-Diversity Optimization
 
 <div align="center">
   <img src="./CoIDO.jpeg" alt="CoIDO Framework" width="800">
@@ -6,6 +6,7 @@
 
 ## Introduction
 
+**CoIDO: Efficient Data Selection for Visual Instruction Tuning via Coupled Importance-Diversity Optimization
 
 
 ### Key Features
