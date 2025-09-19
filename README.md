@@ -6,7 +6,7 @@
 
 ## Introduction
 
-**CoIDO (Confidence-aware Instruction Data Optimization)** is a data selection framework for high-quality instruction tuning of vision-language models. This project is adapted and significantly improved from [Self-Filter](https://github.com/RayRuiboChen/Self-Filter).
+
 
 ### Key Features
 
