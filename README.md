@@ -225,15 +225,7 @@ This work is adapted from Self-Filter. If you use this code, please consider cit
 }
 ```
 
-**CoIDO** (when available):
-```bibtex
-@software{coido2024,
-  title={CoIDO: Confidence-aware Instruction Data Optimization},
-  author={Your Name},
-  year={2024},
-  url={https://github.com/your-username/CoIDO}
-}
-```
+
 
 ## License
 
