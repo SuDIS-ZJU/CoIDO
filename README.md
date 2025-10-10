@@ -9,22 +9,7 @@
 **CoIDO: Efficient Data Selection for Visual Instruction Tuning via Coupled Importance-Diversity Optimization
 
 
-### Key Features
 
-- **Self-supervised Data Selection**: Uses the vision-language model itself as a filter for instruction tuning data
-- **Multi-modal Feature Integration**: Combines CLIP features with multiple quality scores (CLIP score, ImageReward, LLM evaluation)
-- **Dataset-aware Filtering**: Ensures diversity across different data sources during selection
-- **Uncertainty-aware Training**: Incorporates learnable uncertainty parameters for balanced loss weighting
-- **Clean and Modular**: Fully cleaned codebase with English documentation and relative paths
-
-### Improvements over Original Self-Filter
-
-- ✅ **Simplified Architecture**: Streamlined to focus on the most effective `clip+scores` configuration
-- ✅ **Enhanced Documentation**: All Chinese comments translated to English with comprehensive docstrings
-- ✅ **Standardized Paths**: All hardcoded absolute paths converted to relative paths
-- ✅ **Optimized Parameters**: Removed unnecessary parameters and options for cleaner usage
-- ✅ **Better Organization**: Restructured codebase with clear separation of concerns
-- ✅ **Optional Clustering**: Added spectral clustering for enhanced diversity
 
 ## Installation
 
