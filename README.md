@@ -200,6 +200,16 @@ To adapt CoIDO for your use case:
 
 This work is adapted from Self-Filter. If you use this code, please consider citing both:
 
+**CoIDO**:
+```bibtex
+@article{yan2025coido,
+  title={CoIDO: Efficient Data Selection for Visual Instruction Tuning via Coupled Importance-Diversity Optimization},
+  author={Yan, Yichen and Zhong, Ming and Zhu, Qi and Gu, Xiaoling and Chen, Jinpeng and Li, Huan},
+  journal={arXiv preprint arXiv:2510.17847},
+  year={2025}
+}
+```
+
 **Original Self-Filter**:
 ```bibtex
 @article{chen2024your,
