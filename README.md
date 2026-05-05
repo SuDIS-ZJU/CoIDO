@@ -1,14 +1,32 @@
 # CoIDO: Efficient Data Selection for Visual Instruction Tuning via Coupled Importance-Diversity Optimization
 
 <div align="center">
+
+  <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/115955">
+    <img src="https://img.shields.io/badge/NeurIPS%202025-Accepted-8A2BE2?style=for-the-badge" alt="NeurIPS 2025 Accepted">
+  </a>
+  <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/115955">
+    <img src="https://img.shields.io/badge/Official%20Poster-115955-blue?style=for-the-badge" alt="NeurIPS 2025 Poster">
+  </a>
+
+</div>
+
+<div align="center">
+  <h3>🎉 Accepted to NeurIPS 2025! 🎉</h3>
+  <p>
+    <strong>CoIDO</strong> has been accepted to <strong>NeurIPS 2025</strong>.
+    Check out our official conference page:
+    <a href="https://neurips.cc/virtual/2025/loc/san-diego/poster/115955"><strong>NeurIPS 2025 Poster</strong></a>.
+  </p>
+</div>
+
+<div align="center">
   <img src="./CoIDO.jpeg" alt="CoIDO Framework" width="800">
 </div>
 
 ## Introduction
 
-**CoIDO: Efficient Data Selection for Visual Instruction Tuning via Coupled Importance-Diversity Optimization
-
-
+**CoIDO** is an efficient data selection framework for visual instruction tuning via **Coupled Importance-Diversity Optimization**. This repository contains the official implementation of our NeurIPS 2025 paper.
 
 
 ## Installation
@@ -202,10 +220,10 @@ This work is adapted from Self-Filter. If you use this code, please consider cit
 
 **CoIDO**:
 ```bibtex
-@article{yan2025coido,
+@inproceedings{yan2025coido,
   title={CoIDO: Efficient Data Selection for Visual Instruction Tuning via Coupled Importance-Diversity Optimization},
   author={Yan, Yichen and Zhong, Ming and Zhu, Qi and Gu, Xiaoling and Chen, Jinpeng and Li, Huan},
-  journal={arXiv preprint arXiv:2510.17847},
+  booktitle={Advances in Neural Information Processing Systems},
   year={2025}
 }
 ```
