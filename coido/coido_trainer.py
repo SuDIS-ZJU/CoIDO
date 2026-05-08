@@ -704,7 +704,7 @@ class LLaVATrainer_CoIDO(Trainer):
         sigma1 = sigma1.mean()  # Ensure sigma1 is scalar
         sigma2 = sigma2.mean()  # Ensure sigma2 is scalar
         
-        total_loss = (1.0 / (2.0 * sigma1 ** 2)) * L1 + \
+        total_loss = (1.0 / ( sigma1 ** 2)) * L1 + \
                      (1.0 / (2.0 * sigma2 ** 2)) * L2 + \
                      torch.log(sigma1) + \
                      torch.log(sigma2)
