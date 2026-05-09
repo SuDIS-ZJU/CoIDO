@@ -1,50 +1,38 @@
 #!/bin/bash
-# CoIDO Stage 2 Data Filtering Script
+# COIDO Stage 2: Data Selection using trained COIDO Scorer
+# Selects high-quality data subsets based on learned importance and diversity scores
 
-# Set environment variables
-export PYTORCH_CUDA_ALLOC_CONF=max_split_size_mb:32
-export TRANSFORMERS_OFFLINE=1
-export PYTORCH_NO_CUDA_MEMORY_CACHING=1
+# Paths - set these before running
+: ${COIDO_DATA_DIR:="./data"}                    # Directory containing scores and clustering
+: ${COIDO_STAGE1_CKPT:="./checkpoints/coido_scorer/checkpoint-1000"}  # Stage 1 checkpoint
+: ${COIDO_OUTPUT_DIR:="./outputs"}              # Output directory for filtered dataset
 
-# Set paths
-STAGE1_MODEL_PATH="./data/checkpoints/coido_stage1_20CLS/checkpoint-2000/"
+STAGE1_MODEL_PATH="${COIDO_STAGE1_CKPT}"
 FEATURE_TYPE="clip+scores"
-RAW_ANNOTATION_PATH="./data/training_data.json"
-RESULT_DIR="./data/difficulty/"
-DATA_DIR="./data/"
-DIFFICULTY_SAVE_NAME="difficulty_${FEATURE_TYPE}_dataset_20CLS.json"
-DIFFICULTY_SAVE_PATH="${RESULT_DIR}/${DIFFICULTY_SAVE_NAME}"
-FILTERED_ANNOTATION_SAVE_PATH="${DATA_DIR}/filtered_training_data_20CLS.json"
-FILTER_NUM=133040  # Number of samples to filter
+RAW_ANNOTATION_PATH="${COIDO_DATA_DIR}/llava_v1_5_665k_add_idx_with_dataset.json"
+RESULT_DIR="${COIDO_OUTPUT_DIR}/difficulty"
+DATA_DIR="${COIDO_OUTPUT_DIR}/data"
 
-# Create necessary directories
-echo "Creating necessary directories..."
+DIFFICULTY_SAVE_NAME="difficulty_${FEATURE_TYPE}.json"
+DIFFICULTY_SAVE_PATH="${RESULT_DIR}/${DIFFICULTY_SAVE_NAME}"
+FILTERED_ANNOTATION_SAVE_PATH="${DATA_DIR}/llava_v1_5_filtered_dataset.json"
+FILTER_NUM=133000
+USE_FALLBACK=1
+
 mkdir -p $RESULT_DIR
 mkdir -p $DATA_DIR
 
-# Set directory permissions
-echo "Setting directory permissions..."
-chmod -R 755 $RESULT_DIR
-chmod -R 755 $DATA_DIR
-
-# Run stage2.py for data filtering (dataset-based approach)
-echo "Starting dataset-based data filtering..."
-python "./coido/stage2.py" \
+echo "Running COIDO Stage 2: Data Selection..."
+python coido_scorer/stage2.py \
     --stage1_model_path $STAGE1_MODEL_PATH \
     --feature_extractor_setting $FEATURE_TYPE \
     --result_dir $RESULT_DIR \
     --difficulty_save_name $DIFFICULTY_SAVE_NAME \
     --raw_annotation_path $RAW_ANNOTATION_PATH \
     --filtered_annotation_save_path $FILTERED_ANNOTATION_SAVE_PATH \
-    --filter_num $FILTER_NUM
+    --filter_num $FILTER_NUM \
+    --gamma 1.0 \
+    --k_nearest 10 \
+    --use_fallback $USE_FALLBACK
 
-# Ensure output files have appropriate permissions
-if [ -f "$FILTERED_ANNOTATION_SAVE_PATH" ]; then
-    echo "Setting output file permissions..."
-    chmod 644 $FILTERED_ANNOTATION_SAVE_PATH
-    echo "File successfully saved and permissions set"
-else
-    echo "Warning: File was not successfully created"
-fi
-
-echo "Dataset-based data filtering completed! Filtered data saved to $FILTERED_ANNOTATION_SAVE_PATH" 
+echo "Data selection complete! Filtered dataset saved to $FILTERED_ANNOTATION_SAVE_PATH"
